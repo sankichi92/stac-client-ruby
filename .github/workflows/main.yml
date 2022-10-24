@@ -28,3 +28,7 @@ jobs:
 
       - name: Run the default task
         run: bundle exec rake
+        env:
+          RBS_TEST_TARGET: STAC::Client::*
+          RUBYOPT: -r bundler/setup -r rbs/test/setup
+          RBS_TEST_LOGLEVEL: warn

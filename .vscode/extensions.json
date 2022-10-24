@@ -1,3 +1,8 @@
 {
-  "recommendations": ["shopify.ruby-lsp", "KoichiSasada.vscode-rdbg"]
+  "recommendations": [
+    "shopify.ruby-lsp",
+    "koichisasada.vscode-rdbg",
+    "soutaro.rbs-syntax",
+    "soutaro.steep-vscode"
+  ]
 }

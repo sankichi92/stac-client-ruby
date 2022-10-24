@@ -7,8 +7,10 @@ gemspec
 
 gem 'debug'
 gem 'rake'
+gem 'rbs'
 gem 'rspec'
 gem 'rubocop'
 gem 'rubocop-rake'
 gem 'rubocop-rspec'
 gem 'ruby-lsp'
+gem 'steep'
