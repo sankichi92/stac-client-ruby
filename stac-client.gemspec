@@ -4,7 +4,7 @@ require_relative 'lib/stac/client/version'
 
 Gem::Specification.new do |spec|
   spec.name = 'stac-client'
-  spec.version = Stac::Client::VERSION
+  spec.version = STAC::Client::VERSION
   spec.authors = ['Takahiro Miyoshi']
   spec.email = ['takahiro-miyoshi@sankichi.net']
 

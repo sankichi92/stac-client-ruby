@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-RSpec.describe Stac::Client do
+RSpec.describe STAC::Client do
   it 'has a version number' do
-    expect(Stac::Client::VERSION).not_to be_nil
+    expect(STAC::Client::VERSION).not_to be_nil
   end
 end
