@@ -42,6 +42,10 @@ GEM
       unicode-display_width (>= 1.4.0, < 3.0)
     rubocop-ast (1.23.0)
       parser (>= 3.1.1.0)
+    rubocop-rake (0.6.0)
+      rubocop (~> 1.0)
+    rubocop-rspec (2.14.1)
+      rubocop (~> 1.33)
     ruby-progressbar (1.11.0)
     stac (0.1.0)
     unicode-display_width (2.3.0)
@@ -51,9 +55,11 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  rake (~> 13.0)
-  rspec (~> 3.0)
-  rubocop (~> 1.21)
+  rake
+  rspec
+  rubocop
+  rubocop-rake
+  rubocop-rspec
   stac-client!
 
 BUNDLED WITH
