@@ -5,8 +5,10 @@ source 'https://rubygems.org'
 # Specify your gem's dependencies in stac-client.gemspec
 gemspec
 
+gem 'debug'
 gem 'rake'
 gem 'rspec'
 gem 'rubocop'
 gem 'rubocop-rake'
 gem 'rubocop-rspec'
+gem 'ruby-lsp'
