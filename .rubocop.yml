@@ -21,6 +21,10 @@ Style/TrailingCommaInHashLiteral:
 Metrics:
   Enabled: false
 
+Naming/FileName:
+  Exclude:
+    - lib/stac-client.rb
+
 RSpec/DescribedClass:
   EnforcedStyle: explicit
 
