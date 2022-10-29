@@ -4,12 +4,12 @@ require 'stac'
 require_relative 'client/version'
 
 module STAC
-  # Client for interacting with the root of a STAC API.
+  # Client for interacting with the root of a \STAC API.
   class Client
     class << self
-      # Returns a Client instance from STAC API landing page URL.
+      # Returns a Client instance from \STAC API landing page URL.
       #
-      # Raises STAC::TypeError when the fetched JSON from the given URL is not STAC Catalog.
+      # Raises STAC::TypeError when the fetched JSON from the given URL is not \STAC Catalog.
       def from_url(url)
         obj = STAC.from_url(url)
         unless obj.instance_of?(Catalog)
