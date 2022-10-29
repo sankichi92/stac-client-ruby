@@ -6,5 +6,8 @@ module STAC
     def initialize: (Catalog catalog) -> void
 
     attr_reader catalog: Catalog
+
+    def conformances: -> Array[String]
+    def conforms_to?: (Regexp conformance) -> bool
   end
 end

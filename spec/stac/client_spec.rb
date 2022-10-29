@@ -34,4 +34,28 @@ RSpec.describe STAC::Client do
       end
     end
   end
+
+  describe '#conforms_to?' do
+    subject(:client) { STAC::Client.new(landing_page_catalog) }
+
+    context 'when API conforms the given conformance' do
+      it 'returns true' do
+        result = client.conforms_to?(STAC::API::Conformance::ITEM_SEARCH)
+
+        expect(result).to be true
+      end
+    end
+
+    context 'when API does not conform the given conformance' do
+      before do
+        client.catalog.extra['conformsTo'] = []
+      end
+
+      it 'returns false' do
+        result = client.conforms_to?(STAC::API::Conformance::ITEM_SEARCH)
+
+        expect(result).to be false
+      end
+    end
+  end
 end

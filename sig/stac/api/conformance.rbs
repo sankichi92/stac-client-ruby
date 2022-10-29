@@ -1,0 +1,13 @@
+module STAC
+  module API
+    module Conformance
+      BASE_URL: Regexp
+
+      CORE: Regexp
+      COLLECTIONS: Regexp
+      FEATURES: Regexp
+      ITEM_SEARCH: Regexp
+      BROWSABLE: Regexp
+    end
+  end
+end
