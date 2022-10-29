@@ -5,6 +5,8 @@ source 'https://rubygems.org'
 # Specify your gem's dependencies in stac-client.gemspec
 gemspec
 
+gem 'stac', git: 'https://github.com/sankichi92/stac-ruby.git', branch: 'main'
+
 gem 'debug'
 gem 'rake'
 gem 'rbs'
@@ -14,3 +16,4 @@ gem 'rubocop-rake'
 gem 'rubocop-rspec'
 gem 'ruby-lsp'
 gem 'steep'
+gem 'webmock'

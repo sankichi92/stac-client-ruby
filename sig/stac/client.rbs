@@ -1,6 +1,10 @@
+# See the writing guide of rbs: https://github.com/ruby/rbs#guides
 module STAC
-  module Client
-    VERSION: String
-    # See the writing guide of rbs: https://github.com/ruby/rbs#guides
+  class Client
+    def self.from_url: (String url) -> Client
+
+    def initialize: (Catalog catalog) -> void
+
+    attr_reader catalog: Catalog
   end
 end

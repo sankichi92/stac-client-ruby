@@ -8,11 +8,11 @@ target :lib do
   check 'lib'
 
   # library "pathname", "set"       # Standard libraries
-  # library "strong_json"           # Gems
+  library 'stac' # Gems
 
   # configure_code_diagnostics(D::Ruby.strict)       # `strict` diagnostics setting
   # configure_code_diagnostics(D::Ruby.lenient)      # `lenient` diagnostics setting
-  # configure_code_diagnostics do |hash|             # You can setup everything yourself
-  #   hash[D::Ruby::NoMethod] = :information
-  # end
+  configure_code_diagnostics do |hash|
+    hash[D::Ruby::MethodDefinitionMissing] = nil # To supress noisy VS Code extension message.
+  end
 end

@@ -1,0 +1,5 @@
+module STAC
+  class Client
+    VERSION: String
+  end
+end

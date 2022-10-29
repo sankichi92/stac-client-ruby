@@ -2,7 +2,12 @@
 
 require 'stac/client'
 
+require 'webmock/rspec'
+require_relative 'support/fixture_helper'
+
 RSpec.configure do |config|
+  config.include FixtureHelper
+
   # Enable flags like --only-failures and --next-failure
   config.example_status_persistence_file_path = '.rspec_status'
 
