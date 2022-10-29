@@ -19,6 +19,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+        with:
+          submodules: true
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
@@ -30,6 +32,6 @@ jobs:
         run: bundle exec rake
         env:
           RBS_TEST_TARGET: STAC::*
-          RBS_TEST_OPT: -r stac -I sig
+          RBS_TEST_OPT: --repo gem_rbs_collection/gems -r faraday -r stac -I sig
           RUBYOPT: -r bundler/setup -r rbs/test/setup
           RBS_TEST_LOGLEVEL: warn

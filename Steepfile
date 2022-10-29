@@ -7,8 +7,10 @@ target :lib do
 
   check 'lib'
 
-  # library "pathname", "set"       # Standard libraries
-  library 'stac' # Gems
+  repo_path 'gem_rbs_collection/gems'
+
+  library 'forwardable' # Standard libraries
+  library 'faraday', 'stac' # Gems
 
   # configure_code_diagnostics(D::Ruby.strict)       # `strict` diagnostics setting
   # configure_code_diagnostics(D::Ruby.lenient)      # `lenient` diagnostics setting
