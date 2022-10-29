@@ -2,6 +2,7 @@
 
 require 'stac'
 require_relative 'api/conformance'
+require_relative 'client/http_client'
 require_relative 'client/version'
 
 module STAC
@@ -11,10 +12,12 @@ module STAC
       # Returns a Client instance from \STAC \API landing page URL.
       #
       # Raises STAC::TypeError when the fetched JSON from the given URL is not \STAC Catalog.
-      def from_url(url)
-        obj = STAC.from_url(url)
+      def from_url(url, params: {}, headers: {}, **http_options)
+        obj = STAC.from_url(
+          url, http_client: HTTPClient.new(params: params, headers: headers, **http_options.merge(url: url)),
+        )
         unless obj.instance_of?(Catalog)
-          raise TypeError, %(could not resolve fetched JSON into STAC::Catalog: #{obj.class})
+          raise TypeError, "could not resolve fetched JSON into STAC::Catalog: #{obj.class}"
         end
 
         new(obj)

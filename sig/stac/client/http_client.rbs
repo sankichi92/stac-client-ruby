@@ -1,0 +1,13 @@
+module STAC
+  class Client
+    class HTTPClient
+      DEFAULT_HEADERS: Hash[String, String]
+
+      attr_reader connection: Faraday::Connection
+
+      def initialize: (**untyped) -> void
+                    
+      def get: (URI uri) -> String
+    end
+  end
+end

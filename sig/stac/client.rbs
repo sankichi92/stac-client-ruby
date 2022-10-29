@@ -1,7 +1,7 @@
 # See the writing guide of rbs: https://github.com/ruby/rbs#guides
 module STAC
   class Client
-    def self.from_url: (String url) -> Client
+    def self.from_url: (String url, ?params: Hash[String, String], ?headers: Hash[String, String], **untyped) -> Client
 
     def initialize: (Catalog catalog) -> void
 
