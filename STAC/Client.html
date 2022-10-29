@@ -193,10 +193,10 @@
         </div>
 
         <div class="method-description">
-          
+          <p>Returns the value of “conformsTo” field.</p>
 
           <div class="method-source-code" id="conformances-source">
-            <pre><span class="ruby-comment"># File lib/stac/client.rb, line 30</span>
+            <pre><span class="ruby-comment"># File lib/stac/client.rb, line 31</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">conformances</span>
   <span class="ruby-identifier">catalog</span>.<span class="ruby-identifier">extra</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-string">&#39;conformsTo&#39;</span>, [])
 <span class="ruby-keyword">end</span></pre>
@@ -214,10 +214,12 @@
         </div>
 
         <div class="method-description">
-          
+          <p>Returns wether the <a href="API.html"><code>API</code></a> conforms to the given standard.</p>
+
+<p>The argument should be a constant of <a href="API/Conformance.html"><code>STAC::API::Conformance</code></a></p>
 
           <div class="method-source-code" id="conforms_to-3F-source">
-            <pre><span class="ruby-comment"># File lib/stac/client.rb, line 34</span>
+            <pre><span class="ruby-comment"># File lib/stac/client.rb, line 38</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">conforms_to?</span>(<span class="ruby-identifier">conformance</span>)
   <span class="ruby-identifier">conformances</span>.<span class="ruby-identifier">any?</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span> <span class="ruby-identifier">conformance</span>.<span class="ruby-identifier">match?</span>(<span class="ruby-identifier">c</span>) }
 <span class="ruby-keyword">end</span></pre>
