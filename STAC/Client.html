@@ -89,7 +89,7 @@
 
   <section class="description">
     
-<p><a href="Client.html"><code>Client</code></a> for interacting with the root of a STAC <a href="API.html"><code>API</code></a>.</p>
+<p><a href="Client.html"><code>Client</code></a> for interacting with the root of a STAC API.</p>
 
   </section>
 
@@ -118,7 +118,7 @@
         </div>
 
         <div class="method-description">
-        
+        <p>STAC::Catalog instance of a STAC API landing page.</p>
         </div>
       </div>
     </section>
@@ -137,7 +137,7 @@
         </div>
 
         <div class="method-description">
-          <p>Returns a <a href="Client.html"><code>Client</code></a> instance from STAC <a href="API.html"><code>API</code></a> landing page URL.</p>
+          <p>Returns a <a href="Client.html"><code>Client</code></a> instance from STAC API landing page URL.</p>
 
 <p>Raises STAC::TypeError when the fetched JSON from the given URL is not STAC Catalog.</p>
 
@@ -168,7 +168,7 @@
           
 
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/stac/client.rb, line 26</span>
+            <pre><span class="ruby-comment"># File lib/stac/client.rb, line 27</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">catalog</span>)
   <span class="ruby-ivar">@catalog</span> = <span class="ruby-identifier">catalog</span>
 <span class="ruby-keyword">end</span></pre>
@@ -196,7 +196,7 @@
           <p>Returns the value of “conformsTo” field.</p>
 
           <div class="method-source-code" id="conformances-source">
-            <pre><span class="ruby-comment"># File lib/stac/client.rb, line 31</span>
+            <pre><span class="ruby-comment"># File lib/stac/client.rb, line 32</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">conformances</span>
   <span class="ruby-identifier">catalog</span>.<span class="ruby-identifier">extra</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-string">&#39;conformsTo&#39;</span>, [])
 <span class="ruby-keyword">end</span></pre>
@@ -219,7 +219,7 @@
 <p>The argument should be a constant of <a href="API/Conformance.html"><code>STAC::API::Conformance</code></a></p>
 
           <div class="method-source-code" id="conforms_to-3F-source">
-            <pre><span class="ruby-comment"># File lib/stac/client.rb, line 38</span>
+            <pre><span class="ruby-comment"># File lib/stac/client.rb, line 39</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">conforms_to?</span>(<span class="ruby-identifier">conformance</span>)
   <span class="ruby-identifier">conformances</span>.<span class="ruby-identifier">any?</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span> <span class="ruby-identifier">conformance</span>.<span class="ruby-identifier">match?</span>(<span class="ruby-identifier">c</span>) }
 <span class="ruby-keyword">end</span></pre>

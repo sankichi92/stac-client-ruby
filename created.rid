@@ -1,7 +1,7 @@
-Sat, 29 Oct 2022 10:46:40 +0000
-README.md	Sat, 29 Oct 2022 10:46:37 +0000
-CHANGELOG.md	Sat, 29 Oct 2022 10:46:37 +0000
-lib/stac-client.rb	Sat, 29 Oct 2022 10:46:37 +0000
-lib/stac/api/conformance.rb	Sat, 29 Oct 2022 10:46:37 +0000
-lib/stac/client.rb	Sat, 29 Oct 2022 10:46:37 +0000
-lib/stac/client/version.rb	Sat, 29 Oct 2022 10:46:37 +0000
+Sat, 29 Oct 2022 12:27:48 +0000
+README.md	Sat, 29 Oct 2022 12:27:45 +0000
+CHANGELOG.md	Sat, 29 Oct 2022 12:27:45 +0000
+lib/stac-client.rb	Sat, 29 Oct 2022 12:27:45 +0000
+lib/stac/api/conformance.rb	Sat, 29 Oct 2022 12:27:45 +0000
+lib/stac/client.rb	Sat, 29 Oct 2022 12:27:45 +0000
+lib/stac/client/version.rb	Sat, 29 Oct 2022 12:27:45 +0000
