@@ -87,7 +87,7 @@
 
   <section class="description">
     
-<p>TODO</p>
+<p>A HTTP <a href="../Client.html"><code>Client</code></a>, wrapper of <a href="https://github.com/lostisland/faraday">Faraday</a>.</p>
 
   </section>
 
@@ -140,8 +140,11 @@
           <div class="method-source-code" id="new-source">
             <pre><span class="ruby-comment"># File lib/stac/client/http_client.rb, line 14</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-operator">**</span><span class="ruby-identifier">options</span>)
-  <span class="ruby-identifier">options</span> = { <span class="ruby-value">headers:</span> <span class="ruby-constant">DEFAULT_HEADERS</span> }.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">options</span>)
-  <span class="ruby-ivar">@connection</span> = <span class="ruby-constant">Faraday</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">options</span>)
+  <span class="ruby-identifier">options</span> = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">dup</span>
+  <span class="ruby-identifier">options</span>[<span class="ruby-value">:headers</span>] = <span class="ruby-constant">DEFAULT_HEADERS</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">options</span>[<span class="ruby-value">:headers</span>].<span class="ruby-identifier">to_h</span>)
+  <span class="ruby-ivar">@connection</span> = <span class="ruby-constant">Faraday</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">options</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">conn</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">conn</span>.<span class="ruby-identifier">response</span> <span class="ruby-value">:raise_error</span> <span class="ruby-comment"># TODO: Raise gem specific errors instead of Faraday errors</span>
+  <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
@@ -164,10 +167,10 @@
         </div>
 
         <div class="method-description">
-          
+          <p>Makes a HTTP request and returns the response body as String.</p>
 
           <div class="method-source-code" id="get-source">
-            <pre><span class="ruby-comment"># File lib/stac/client/http_client.rb, line 19</span>
+            <pre><span class="ruby-comment"># File lib/stac/client/http_client.rb, line 23</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">get</span>(<span class="ruby-identifier">uri</span>)
   <span class="ruby-identifier">response</span> = <span class="ruby-ivar">@connection</span>.<span class="ruby-identifier">get</span>(<span class="ruby-identifier">uri</span>)
   <span class="ruby-identifier">response</span>.<span class="ruby-identifier">body</span>
