@@ -74,6 +74,7 @@
   <ul class="link-list" role="directory">
     <li ><a href="#method-c-new">::new</a>
     <li ><a href="#method-i-get">#get</a>
+    <li ><a href="#method-i-post">#post</a>
   </ul>
 </div>
 
@@ -143,6 +144,8 @@
   <span class="ruby-identifier">options</span> = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">dup</span>
   <span class="ruby-identifier">options</span>[<span class="ruby-value">:headers</span>] = <span class="ruby-constant">DEFAULT_HEADERS</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">options</span>[<span class="ruby-value">:headers</span>].<span class="ruby-identifier">to_h</span>)
   <span class="ruby-ivar">@connection</span> = <span class="ruby-constant">Faraday</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">options</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">conn</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">conn</span>.<span class="ruby-identifier">request</span> <span class="ruby-value">:json</span>
+    <span class="ruby-identifier">conn</span>.<span class="ruby-identifier">response</span> <span class="ruby-value">:json</span>
     <span class="ruby-identifier">conn</span>.<span class="ruby-identifier">response</span> <span class="ruby-value">:raise_error</span> <span class="ruby-comment"># TODO: Raise gem specific errors instead of Faraday errors</span>
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
@@ -162,17 +165,39 @@
       <div id="method-i-get" class="method-detail ">
         <div class="method-heading">
           <span class="method-name">get</span><span
-            class="method-args">(uri)</span>
+            class="method-args">(url, params: {}, headers: {})</span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
 
         <div class="method-description">
-          <p>Makes a HTTP request and returns the response body as String.</p>
+          <p>Makes a HTTP GET request and returns the response body.</p>
 
           <div class="method-source-code" id="get-source">
-            <pre><span class="ruby-comment"># File lib/stac/client/http_client.rb, line 23</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">get</span>(<span class="ruby-identifier">uri</span>)
-  <span class="ruby-identifier">response</span> = <span class="ruby-ivar">@connection</span>.<span class="ruby-identifier">get</span>(<span class="ruby-identifier">uri</span>)
+            <pre><span class="ruby-comment"># File lib/stac/client/http_client.rb, line 25</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">get</span>(<span class="ruby-identifier">url</span>, <span class="ruby-value">params:</span> {}, <span class="ruby-value">headers:</span> {})
+  <span class="ruby-identifier">response</span> = <span class="ruby-ivar">@connection</span>.<span class="ruby-identifier">get</span>(<span class="ruby-identifier">url</span>, <span class="ruby-identifier">params</span>, <span class="ruby-identifier">headers</span>)
+  <span class="ruby-identifier">response</span>.<span class="ruby-identifier">body</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-post" class="method-detail ">
+        <div class="method-heading">
+          <span class="method-name">post</span><span
+            class="method-args">(url, params: {}, headers: {})</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+
+        <div class="method-description">
+          <p>Makes a HTTP POST request and returns the response body.</p>
+
+          <div class="method-source-code" id="post-source">
+            <pre><span class="ruby-comment"># File lib/stac/client/http_client.rb, line 31</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">post</span>(<span class="ruby-identifier">url</span>, <span class="ruby-value">params:</span> {}, <span class="ruby-value">headers:</span> {})
+  <span class="ruby-identifier">response</span> = <span class="ruby-ivar">@connection</span>.<span class="ruby-identifier">post</span>(<span class="ruby-identifier">url</span>, <span class="ruby-identifier">params</span>, <span class="ruby-identifier">headers</span>)
   <span class="ruby-identifier">response</span>.<span class="ruby-identifier">body</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
