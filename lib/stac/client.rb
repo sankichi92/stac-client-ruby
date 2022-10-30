@@ -5,6 +5,8 @@ require_relative 'api/conformance'
 require_relative 'client/http_client'
 require_relative 'client/version'
 
+STAC.default_http_client = STAC::Client::HTTPClient.new
+
 module STAC
   # Client for interacting with the root of a \STAC \API.
   class Client
