@@ -15,13 +15,21 @@ module STAC
         options = options.dup
         options[:headers] = DEFAULT_HEADERS.merge(options[:headers].to_h)
         @connection = Faraday.new(options) do |conn|
+          conn.request :json
+          conn.response :json
           conn.response :raise_error # TODO: Raise gem specific errors instead of Faraday errors
         end
       end
 
-      # Makes a HTTP request and returns the response body as String.
-      def get(uri)
-        response = @connection.get(uri)
+      # Makes a HTTP GET request and returns the response body.
+      def get(url, params: {}, headers: {})
+        response = @connection.get(url, params, headers)
+        response.body
+      end
+
+      # Makes a HTTP POST request and returns the response body.
+      def post(url, params: {}, headers: {})
+        response = @connection.post(url, params, headers)
         response.body
       end
     end

@@ -5,7 +5,7 @@ RSpec.describe STAC::Client do
     let(:url) { 'https://stac-api.example.com/' }
 
     before do
-      stub_request(:get, url).to_return(body: landing_page_json)
+      stub_request(:get, url).to_return(headers: { 'Content-Type' => 'application/json' }, body: landing_page_json)
     end
 
     it 'returns STAC::Client' do
@@ -16,17 +16,20 @@ RSpec.describe STAC::Client do
 
     context 'when responded JSON is not Catalog type' do
       before do
-        stub_request(:get, url).to_return(body: {
-          'stac_version' => '1.0.0',
-          'type' => 'Feature',
-          'id' => '20201211_223832_CS2',
-          'bbox' => [],
-          'geometry' => {},
-          'properties' => {},
-          'collection' => 'simple-collection',
-          'links' => [],
-          'assets' => {},
-        }.to_json)
+        stub_request(:get, url).to_return(
+          headers: { 'Content-Type' => 'application/json' },
+          body: {
+            'stac_version' => '1.0.0',
+            'type' => 'Feature',
+            'id' => '20201211_223832_CS2',
+            'bbox' => [],
+            'geometry' => {},
+            'properties' => {},
+            'collection' => 'simple-collection',
+            'links' => [],
+            'assets' => {},
+          }.to_json,
+        )
       end
 
       it 'raises STAC::TypeError' do
