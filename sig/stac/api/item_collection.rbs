@@ -1,0 +1,18 @@
+module STAC
+  module API
+    class ItemCollection < STACObject
+      attr_accessor features: Array[Item]
+      attr_accessor number_matched: Integer?
+      attr_accessor number_returned: Integer?
+
+      def initialize: (
+        features: Array[Item],
+        ?links: Array[Link],
+        ?number_matched: Integer?,
+        ?number_returned: Integer?,
+        ?stac_extensions: Array[String]?,
+        **untyped
+      ) -> void
+    end
+  end
+end

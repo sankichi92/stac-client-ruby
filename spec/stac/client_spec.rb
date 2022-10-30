@@ -5,7 +5,10 @@ RSpec.describe STAC::Client do
     let(:url) { 'https://stac-api.example.com/' }
 
     before do
-      stub_request(:get, url).to_return(headers: { 'Content-Type' => 'application/json' }, body: landing_page_json)
+      stub_request(:get, url).to_return(
+        headers: { 'Content-Type' => 'application/json' },
+        body: read_fixture('landing_page.json'),
+      )
     end
 
     it 'returns STAC::Client' do
@@ -39,7 +42,7 @@ RSpec.describe STAC::Client do
   end
 
   describe '#conforms_to?' do
-    subject(:client) { STAC::Client.new(landing_page_catalog) }
+    subject(:client) { STAC::Client.new(read_fixture_as_object('landing_page.json')) }
 
     context 'when API conforms the given conformance' do
       it 'returns true' do

@@ -2,10 +2,12 @@
 
 require 'stac'
 require_relative 'api/conformance'
+require_relative 'api/item_collection'
 require_relative 'client/http_client'
 require_relative 'client/version'
 
 STAC.default_http_client = STAC::Client::HTTPClient.new
+STAC::ObjectResolver.resolvables << STAC::API::ItemCollection
 
 module STAC
   # Client for interacting with the root of a \STAC \API.
@@ -40,7 +42,7 @@ module STAC
 
     # Returns wether the \API conforms to the given standard.
     #
-    # The argument should be a constant of STAC::API::Conformance
+    # The argument should be a constant of STAC::API::Conformance.
     def conforms_to?(conformance)
       conformances.any? { |c| conformance.match?(c) }
     end

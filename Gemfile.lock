@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/sankichi92/stac-ruby.git
-  revision: ec12c9ba378843ef6fda7b25e444bac26e94404b
+  revision: d4271b76a08b935eba7a910e307859448655cefa
   branch: main
   specs:
     stac (0.1.0)
