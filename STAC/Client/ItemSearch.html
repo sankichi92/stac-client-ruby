@@ -180,7 +180,7 @@
         </div>
 
         <div class="method-description">
-          <p>Returns responses as Enumerator of ItemCollection by following next links automatically.</p>
+          <p>Returns responses as Enumerator of <a href="ItemCollection.html"><code>ItemCollection</code></a> by following next links automatically.</p>
 
           <div class="method-source-code" id="pages-source">
             <pre><span class="ruby-comment"># File lib/stac/client/item_search.rb, line 24</span>
@@ -188,7 +188,7 @@
   <span class="ruby-ivar">@pages</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">Enumerator</span>.<span class="ruby-identifier">new</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">yielder</span><span class="ruby-operator">|</span>
     <span class="ruby-identifier">loop</span> <span class="ruby-keyword">do</span>
       <span class="ruby-identifier">response</span> = <span class="ruby-identifier">client</span>.<span class="ruby-identifier">request</span>(<span class="ruby-ivar">@url</span>, <span class="ruby-value">method:</span> <span class="ruby-ivar">@method</span>, <span class="ruby-value">params:</span> <span class="ruby-ivar">@params</span>, <span class="ruby-value">headers:</span> <span class="ruby-ivar">@headers</span>)
-      <span class="ruby-identifier">item_collection</span> = <span class="ruby-constant">API</span><span class="ruby-operator">::</span><span class="ruby-constant">ItemCollection</span>.<span class="ruby-identifier">from_hash</span>(<span class="ruby-identifier">response</span>)
+      <span class="ruby-identifier">item_collection</span> = <span class="ruby-constant">ItemCollection</span>.<span class="ruby-identifier">from_hash</span>(<span class="ruby-identifier">response</span>)
       <span class="ruby-identifier">yielder</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">item_collection</span>
 
       <span class="ruby-identifier">next_link</span> = <span class="ruby-identifier">item_collection</span>.<span class="ruby-identifier">links</span>.<span class="ruby-identifier">find</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">link</span><span class="ruby-operator">|</span> <span class="ruby-identifier">link</span>.<span class="ruby-identifier">rel</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;next&#39;</span> }
