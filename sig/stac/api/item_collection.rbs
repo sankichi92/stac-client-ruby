@@ -1,6 +1,8 @@
 module STAC
   module API
     class ItemCollection < STACObject
+      def self.from_hash: (Hash[String, untyped] hash) -> ItemCollection
+      
       attr_accessor features: Array[Item]
       attr_accessor number_matched: Integer?
       attr_accessor number_returned: Integer?

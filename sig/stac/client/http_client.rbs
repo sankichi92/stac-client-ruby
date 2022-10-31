@@ -7,8 +7,8 @@ module STAC
 
       def initialize: (**untyped) -> void
                     
-      def get: (URI::Generic | String url, ?params: Hash[String, String], ?headers: Hash[String, String]) -> Hash[String, untyped]
-      def post: (URI::Generic | String url, ?params: Hash[String, String], ?headers: Hash[String, String]) -> Hash[String, untyped]
+      def get: (URI::Generic | String url, ?params: Hash[String | Symbol, untyped], ?headers: Hash[String, String]) -> Hash[String, untyped]
+      def post: (URI::Generic | String url, ?params: Hash[String | Symbol, untyped], ?headers: Hash[String, String]) -> Hash[String, untyped]
     end
   end
 end

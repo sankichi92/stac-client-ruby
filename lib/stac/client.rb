@@ -4,6 +4,7 @@ require 'stac'
 require_relative 'api/conformance'
 require_relative 'api/item_collection'
 require_relative 'client/http_client'
+require_relative 'client/item_search'
 require_relative 'client/version'
 
 STAC.default_http_client = STAC::Client::HTTPClient.new
@@ -17,22 +18,30 @@ module STAC
       #
       # Raises STAC::TypeError when the fetched JSON from the given URL is not \STAC Catalog.
       def from_url(url, params: {}, headers: {}, **http_options)
-        obj = STAC.from_url(
-          url, http_client: HTTPClient.new(params: params, headers: headers, **http_options.merge(url: url)),
-        )
+        http_client = HTTPClient.new(params: params, headers: headers, **http_options.merge(url: url))
+        obj = STAC.from_url(url, http_client: http_client)
         unless obj.instance_of?(Catalog)
           raise TypeError, "could not resolve fetched JSON into STAC::Catalog: #{obj.class}"
         end
 
-        new(obj)
+        new(obj, http_client: http_client)
       end
     end
 
     # STAC::Catalog instance of a \STAC \API landing page.
-    attr_reader :catalog
+    attr_reader :catalog, :http_client
 
-    def initialize(catalog)
+    def initialize(catalog, http_client: HTTPClient.new)
       @catalog = catalog
+      @http_client = http_client
+    end
+
+    def request(url, method: 'GET', params: {}, headers: {})
+      if method.to_s.upcase == 'POST'
+        http_client.post(url, params: params, headers: headers)
+      else
+        http_client.get(url, params: params, headers: headers)
+      end
     end
 
     # Returns the value of "conformsTo" field.

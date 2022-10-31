@@ -1,0 +1,28 @@
+module STAC
+  class Client
+    class ItemSearch
+      %a{rbs:test:skip} attr_reader client: Client
+      @url: String
+      @method: 'GET' | 'POST'
+      @params: Hash[String, untyped]
+      @headers: Hash[String, String]
+
+      @pages: Enumerator[API::ItemCollection, void]
+
+      %a{rbs:test:skip} def initialize: (
+        client: Client,
+        url: String,
+        ?method: 'GET' | 'POST',
+        ?params: Hash[String, untyped],
+        ?headers: Hash[String, String]
+      ) -> void
+
+      def items: -> Enumerator::Lazy[Item, void]
+      def pages: -> Enumerator[API::ItemCollection, void]
+
+      private
+
+      def update_attrs!: (Link link) -> void
+    end
+  end
+end
