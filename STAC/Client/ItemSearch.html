@@ -191,7 +191,7 @@
       <span class="ruby-identifier">item_collection</span> = <span class="ruby-constant">ItemCollection</span>.<span class="ruby-identifier">from_hash</span>(<span class="ruby-identifier">response</span>)
       <span class="ruby-identifier">yielder</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">item_collection</span>
 
-      <span class="ruby-identifier">next_link</span> = <span class="ruby-identifier">item_collection</span>.<span class="ruby-identifier">links</span>.<span class="ruby-identifier">find</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">link</span><span class="ruby-operator">|</span> <span class="ruby-identifier">link</span>.<span class="ruby-identifier">rel</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;next&#39;</span> }
+      <span class="ruby-identifier">next_link</span> = <span class="ruby-identifier">item_collection</span>.<span class="ruby-identifier">find_link</span>(<span class="ruby-value">rel:</span> <span class="ruby-string">&#39;next&#39;</span>)
       <span class="ruby-keyword">break</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">next_link</span>
 
       <span class="ruby-identifier">update_attrs!</span>(<span class="ruby-identifier">next_link</span>)
