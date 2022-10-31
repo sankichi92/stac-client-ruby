@@ -30,7 +30,7 @@ module STAC
             item_collection = ItemCollection.from_hash(response)
             yielder << item_collection
 
-            next_link = item_collection.links.find { |link| link.rel == 'next' }
+            next_link = item_collection.find_link(rel: 'next')
             break unless next_link
 
             update_attrs!(next_link)
