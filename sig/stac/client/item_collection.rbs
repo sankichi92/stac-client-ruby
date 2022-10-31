@@ -1,5 +1,5 @@
 module STAC
-  module API
+  class Client
     class ItemCollection < STACObject
       def self.from_hash: (Hash[String, untyped] hash) -> ItemCollection
       

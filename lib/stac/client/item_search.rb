@@ -27,7 +27,7 @@ module STAC
         @pages ||= Enumerator.new do |yielder|
           loop do
             response = client.request(@url, method: @method, params: @params, headers: @headers)
-            item_collection = API::ItemCollection.from_hash(response)
+            item_collection = ItemCollection.from_hash(response)
             yielder << item_collection
 
             next_link = item_collection.links.find { |link| link.rel == 'next' }

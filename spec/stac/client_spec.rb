@@ -46,7 +46,7 @@ RSpec.describe STAC::Client do
 
     context 'when API conforms the given conformance' do
       it 'returns true' do
-        result = client.conforms_to?(STAC::API::Conformance::ITEM_SEARCH)
+        result = client.conforms_to?(STAC::Client::Conformance::ITEM_SEARCH)
 
         expect(result).to be true
       end
@@ -58,7 +58,7 @@ RSpec.describe STAC::Client do
       end
 
       it 'returns false' do
-        result = client.conforms_to?(STAC::API::Conformance::ITEM_SEARCH)
+        result = client.conforms_to?(STAC::Client::Conformance::ITEM_SEARCH)
 
         expect(result).to be false
       end

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module STAC
-  module API
+  class Client
     # Represents {STAC API - ItemCollection Fragment}[https://github.com/radiantearth/stac-api-spec/tree/main/fragments/itemcollection].
     class ItemCollection < STACObject
       self.type = 'FeatureCollection'

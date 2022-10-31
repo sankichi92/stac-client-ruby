@@ -1,20 +1,20 @@
 # frozen_string_literal: true
 
 require 'stac'
-require_relative 'api/conformance'
-require_relative 'api/item_collection'
+require_relative 'client/conformance'
 require_relative 'client/http_client'
+require_relative 'client/item_collection'
 require_relative 'client/item_search'
 require_relative 'client/version'
 
 STAC.default_http_client = STAC::Client::HTTPClient.new
-STAC::ObjectResolver.resolvables << STAC::API::ItemCollection
+STAC::ObjectResolver.resolvables << STAC::Client::ItemCollection
 
 module STAC
-  # Client for interacting with the root of a \STAC \API.
+  # Client for interacting with the root of a \STAC API.
   class Client
     class << self
-      # Returns a Client instance from \STAC \API landing page URL.
+      # Returns a Client instance from \STAC API landing page URL.
       #
       # Raises STAC::TypeError when the fetched JSON from the given URL is not \STAC Catalog.
       def from_url(url, params: {}, headers: {}, **http_options)
@@ -28,7 +28,7 @@ module STAC
       end
     end
 
-    # STAC::Catalog instance of a \STAC \API landing page.
+    # STAC::Catalog instance of a \STAC API landing page.
     attr_reader :catalog, :http_client
 
     def initialize(catalog, http_client: HTTPClient.new)
@@ -49,9 +49,9 @@ module STAC
       catalog.extra.fetch('conformsTo', [])
     end
 
-    # Returns wether the \API conforms to the given standard.
+    # Returns wether the API conforms to the given standard.
     #
-    # The argument should be a constant of STAC::API::Conformance.
+    # The argument should be a constant of Conformance.
     def conforms_to?(conformance)
       conformances.any? { |c| conformance.match?(c) }
     end

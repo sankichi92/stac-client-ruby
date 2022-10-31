@@ -67,7 +67,7 @@ RSpec.describe STAC::Client::ItemSearch do
       xit 'follows the next link href for the next request' do
         pages = item_search.pages.to_a
 
-        expect(pages).to all(be_an_instance_of(STAC::API::ItemCollection))
+        expect(pages).to all(be_an_instance_of(STAC::Client::ItemCollection))
         expect(client).to have_received(:request).with(url, method: 'GET', params: {}, headers: {})
         expect(client).to have_received(:request).with(next_url, method: 'GET', params: {}, headers: {})
       end

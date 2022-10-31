@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module STAC
-  module API
+  class Client
     SPEC_VERSION = '1.0'
 
     module Conformance

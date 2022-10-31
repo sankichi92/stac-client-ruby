@@ -1,5 +1,5 @@
 module STAC
-  module API
+  class Client
     module Conformance
       BASE_URL: Regexp
 
