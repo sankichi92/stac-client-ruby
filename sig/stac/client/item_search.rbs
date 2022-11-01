@@ -1,7 +1,7 @@
 module STAC
   class Client
     class ItemSearch
-      %a{rbs:test:skip} attr_reader client: Client
+      attr_reader client: Client
       @url: String
       @method: 'GET' | 'POST'
       @params: Hash[String, untyped]
@@ -9,7 +9,7 @@ module STAC
 
       @pages: Enumerator[ItemCollection, void]
 
-      %a{rbs:test:skip} def initialize: (
+      def initialize: (
         client: Client,
         url: String,
         ?method: 'GET' | 'POST',
