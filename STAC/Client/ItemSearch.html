@@ -130,7 +130,7 @@
           
 
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/stac/client/item_search.rb, line 10</span>
+            <pre><span class="ruby-comment"># File lib/stac/client/item_search.rb, line 12</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-value">client:</span>, <span class="ruby-value">url:</span>, <span class="ruby-value">method:</span> <span class="ruby-string">&#39;GET&#39;</span>, <span class="ruby-value">params:</span> {}, <span class="ruby-value">headers:</span> {})
   <span class="ruby-ivar">@client</span> = <span class="ruby-identifier">client</span>
   <span class="ruby-ivar">@url</span> = <span class="ruby-identifier">url</span>
@@ -162,7 +162,7 @@
           <p>Returns search results as Enumerator::Lazy of Item.</p>
 
           <div class="method-source-code" id="items-source">
-            <pre><span class="ruby-comment"># File lib/stac/client/item_search.rb, line 19</span>
+            <pre><span class="ruby-comment"># File lib/stac/client/item_search.rb, line 21</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">items</span>
   <span class="ruby-identifier">pages</span>.<span class="ruby-identifier">lazy</span>.<span class="ruby-identifier">flat_map</span>(<span class="ruby-operator">&amp;</span><span class="ruby-value">:features</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -183,7 +183,7 @@
           <p>Returns responses as Enumerator of <a href="ItemCollection.html"><code>ItemCollection</code></a> by following next links automatically.</p>
 
           <div class="method-source-code" id="pages-source">
-            <pre><span class="ruby-comment"># File lib/stac/client/item_search.rb, line 24</span>
+            <pre><span class="ruby-comment"># File lib/stac/client/item_search.rb, line 26</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">pages</span>
   <span class="ruby-ivar">@pages</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">Enumerator</span>.<span class="ruby-identifier">new</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">yielder</span><span class="ruby-operator">|</span>
     <span class="ruby-identifier">loop</span> <span class="ruby-keyword">do</span>
