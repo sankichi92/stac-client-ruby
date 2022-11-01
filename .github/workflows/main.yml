@@ -32,7 +32,7 @@ jobs:
         run: bundle exec rake
         env:
           RBS_TEST_TARGET: STAC::*
-          RBS_TEST_OPT: --repo gem_rbs_collection/gems -r uri -r faraday -r stac -I sig
+          RBS_TEST_OPT: --repo gem_rbs_collection/gems -r forwardable -r uri -r faraday -r stac -I sig
           RBS_TEST_DOUBLE_SUITE: rspec
           RUBYOPT: -r bundler/setup -r rbs/test/setup
           RBS_TEST_LOGLEVEL: warn

@@ -1,6 +1,8 @@
 # See the writing guide of rbs: https://github.com/ruby/rbs#guides
 module STAC
   class Client
+    extend Forwardable
+
     def self.from_url: (String url, ?params: Hash[String, String], ?headers: Hash[String, String], **untyped) -> Client
 
     attr_reader catalog: Catalog
@@ -8,9 +10,12 @@ module STAC
     
     def initialize: (Catalog catalog, ?http_client: HTTPClient) -> void
 
-    def request: (String url, ?method: untyped, ?params: Hash[String, untyped], ?headers: Hash[String, String]) -> Hash[String, untyped]
     def conformances: -> Array[String]
     def conforms_to?: (Regexp conformance) -> bool
     def search: (**untyped) -> ItemSearch
+    
+    # Followings are delegated from HTTPClient.
+    def get: (URI::Generic | String url, ?params: Hash[String | Symbol, untyped], ?headers: Hash[String, String]) -> Hash[String, untyped]
+    def post: (URI::Generic | String url, ?params: Hash[String | Symbol, untyped], ?headers: Hash[String, String]) -> Hash[String, untyped]
   end
 end

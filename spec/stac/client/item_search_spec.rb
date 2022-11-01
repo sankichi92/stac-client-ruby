@@ -12,7 +12,7 @@ RSpec.describe STAC::Client::ItemSearch do
 
   describe '#items' do
     before do
-      allow(client).to receive(:request).and_return(
+      allow(client).to receive(:get).and_return(
         {
           'type' => 'FeatureCollection',
           'features' => [
@@ -45,7 +45,7 @@ RSpec.describe STAC::Client::ItemSearch do
       let(:next_url) { 'https://stac-api.example.com/search?page=2' }
 
       before do
-        allow(client).to receive(:request).and_return(
+        allow(client).to receive(:get).and_return(
           {
             'type' => 'FeatureCollection',
             'features' => [],
@@ -64,23 +64,24 @@ RSpec.describe STAC::Client::ItemSearch do
         )
       end
 
-      xit 'follows the next link href for the next request' do
+      it 'follows the next link href for the next request' do
         pages = item_search.pages.to_a
 
         expect(pages).to all(be_an_instance_of(STAC::Client::ItemCollection))
-        expect(client).to have_received(:request).with(url, method: 'GET', params: {}, headers: {})
-        expect(client).to have_received(:request).with(next_url, method: 'GET', params: {}, headers: {})
+        expect(client).to have_received(:get).with(url, params: { 'limit' => 100 }, headers: {})
+        expect(client).to have_received(:get).with(next_url, params: {}, headers: {})
+                                             .at_least(:once) # For RBS test
       end
     end
 
     context 'with POST search with body and merge' do
       let(:method) { 'POST' }
       let(:params) do
-        { 'bbox' => [-110, 39.5, -105, 40.5] }
+        { bbox: [-110, 39.5, -105, 40.5] }
       end
 
       before do
-        allow(client).to receive(:request).and_return(
+        allow(client).to receive(:post).and_return(
           {
             'type' => 'FeatureCollection',
             'features' => [],
@@ -123,9 +124,8 @@ RSpec.describe STAC::Client::ItemSearch do
       it 'merges params for the next request' do
         item_search.pages.to_a
 
-        expect(client).to have_received(:request).with(
+        expect(client).to have_received(:post).with(
           'https://stac-api.example.com/search',
-          method: 'POST',
           params: {
             'bbox' => [-110, 39.5, -105, 40.5],
             'page' => 2,
@@ -139,11 +139,11 @@ RSpec.describe STAC::Client::ItemSearch do
     context 'with POST search with body, without merge' do
       let(:method) { 'POST' }
       let(:params) do
-        { 'bbox' => [-110, 39.5, -105, 40.5] }
+        { bbox: [-110, 39.5, -105, 40.5] }
       end
 
       before do
-        allow(client).to receive(:request).and_return(
+        allow(client).to receive(:post).and_return(
           {
             'type' => 'FeatureCollection',
             'features' => [],
@@ -169,9 +169,8 @@ RSpec.describe STAC::Client::ItemSearch do
       it 'replaces params for the next request' do
         item_search.pages.to_a
 
-        expect(client).to have_received(:request).with(
+        expect(client).to have_received(:post).with(
           'https://stac-api.example.com/search',
-          method: 'POST',
           params: {
             'next' => 'a9f3kfbc98e29a0da23',
           },
@@ -184,14 +183,14 @@ RSpec.describe STAC::Client::ItemSearch do
       let(:method) { 'POST' }
       let(:params) do
         {
-          'bbox' => [-110, 39.5, -105, 40.5],
-          'page' => 2,
-          'limit' => 10,
+          bbox: [-110, 39.5, -105, 40.5],
+          page: 2,
+          limit: 10,
         }
       end
 
       before do
-        allow(client).to receive(:request).and_return(
+        allow(client).to receive(:post).and_return(
           {
             'type' => 'FeatureCollection',
             'features' => [],
@@ -217,9 +216,8 @@ RSpec.describe STAC::Client::ItemSearch do
       it 'sets headers for the next request' do
         item_search.pages.to_a
 
-        expect(client).to have_received(:request).with(
+        expect(client).to have_received(:post).with(
           'https://stac-api.example.com/search',
-          method: 'POST',
           params: {},
           headers: { 'Search-After' => 'LC81530752019135LGN00' },
         ).at_least(:once)

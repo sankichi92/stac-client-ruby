@@ -77,10 +77,10 @@ RSpec.describe STAC::Client do
     end
 
     it 'makes a request and returns ItemSearch' do
-      pending 'TODO: Convert params when HTTP method is GET'
       item_search = client.search(bbox: [-110, 39.5, -105, 40.5])
 
-      expect(WebMock).to have_requested(:get, 'https://stac-api.example.com/search?bbox=-110,39.5,-105,40.5')
+      expect(WebMock).to have_requested(:get, 'https://stac-api.example.com/search?bbox=-110,39.5,-105,40.5&limit=100')
+        .at_least_once # For RBS test
       expect(item_search).to be_an_instance_of STAC::Client::ItemSearch
     end
 

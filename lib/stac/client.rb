@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'forwardable'
 require 'stac'
 require_relative 'client/conformance'
 require_relative 'client/http_client'
@@ -13,6 +14,8 @@ STAC::ObjectResolver.resolvables << STAC::Client::ItemCollection
 module STAC
   # Client for interacting with the root of a \STAC API.
   class Client
+    extend Forwardable
+
     class << self
       # Returns a Client instance from \STAC API landing page URL.
       #
@@ -31,17 +34,11 @@ module STAC
     # STAC::Catalog instance of a \STAC API landing page.
     attr_reader :catalog, :http_client
 
+    def_delegators :http_client, :get, :post
+
     def initialize(catalog, http_client: HTTPClient.new)
       @catalog = catalog
       @http_client = http_client
-    end
-
-    def request(url, method: 'GET', params: {}, headers: {})
-      if method.to_s.upcase == 'POST'
-        http_client.post(url, params: params, headers: headers)
-      else
-        http_client.get(url, params: params, headers: headers)
-      end
     end
 
     # Returns the value of "conformsTo" field.
@@ -71,7 +68,7 @@ module STAC
         client: self,
         url: search_links.first.href,
         method: support_post ? 'POST' : 'GET',
-        params: params.transform_keys(&:to_s),
+        params: params,
       ).tap { |item_search| item_search.pages.first }
     end
   end

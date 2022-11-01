@@ -1,7 +1,10 @@
 module STAC
   class Client
     class ItemSearch
+      DEFAULT_PARAMS: Hash[String, untyped]
+
       attr_reader client: Client
+      
       @url: String
       @method: 'GET' | 'POST'
       @params: Hash[String, untyped]
@@ -13,7 +16,7 @@ module STAC
         client: Client,
         url: String,
         ?method: 'GET' | 'POST',
-        ?params: Hash[String, untyped],
+        ?params: Hash[Symbol, untyped],
         ?headers: Hash[String, String]
       ) -> void
 
@@ -22,6 +25,9 @@ module STAC
 
       private
 
+      def request!: -> Hash[String, untyped]
+      def params_for_get: -> Hash[String, untyped]
+      def params_for_post: -> Hash[String, untyped]
       def update_attrs!: (Link link) -> void
     end
   end
