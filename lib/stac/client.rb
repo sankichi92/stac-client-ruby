@@ -55,5 +55,24 @@ module STAC
     def conforms_to?(conformance)
       conformances.any? { |c| conformance.match?(c) }
     end
+
+    # Queries the /search endpoint using the given parameters and returns ItemSearch.
+    #
+    # Raises NotImplementedError when the Catalog have no rel="search" links.
+    def search(**params)
+      search_links = catalog.links.select do |link|
+        link.rel == 'search' && link.type == 'application/geo+json'
+      end
+      raise NotImplementedError, 'catalog does not have rel="search" links' if search_links.empty?
+
+      support_post = search_links.any? { |link| link.extra['method'] == 'POST' }
+
+      ItemSearch.new(
+        client: self,
+        url: search_links.first.href,
+        method: support_post ? 'POST' : 'GET',
+        params: params.transform_keys(&:to_s),
+      ).tap { |item_search| item_search.pages.first }
+    end
   end
 end

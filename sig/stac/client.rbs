@@ -11,5 +11,6 @@ module STAC
     def request: (String url, ?method: untyped, ?params: Hash[String, untyped], ?headers: Hash[String, String]) -> Hash[String, untyped]
     def conformances: -> Array[String]
     def conforms_to?: (Regexp conformance) -> bool
+    def search: (**untyped) -> ItemSearch
   end
 end
