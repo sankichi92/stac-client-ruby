@@ -98,9 +98,26 @@
 
 <pre>$ gem install stac-client</pre>
 
-<h2 id="label-Usage">Usage<span><a href="#label-Usage">&para;</a> <a href="#top">&uarr;</a></span></h2>
+<h2 id="label-Getting+Started">Getting Started<span><a href="#label-Getting+Started">&para;</a> <a href="#top">&uarr;</a></span></h2>
 
-<p>TODO: Write usage instructions here</p>
+<pre class="ruby"><span class="ruby-identifier">require</span> <span class="ruby-string">&#39;stac-client&#39;</span>
+
+<span class="ruby-comment"># Create a client instance from a STAC API root URL.</span>
+<span class="ruby-identifier">client</span> = <span class="ruby-constant">STAC</span><span class="ruby-operator">::</span><span class="ruby-constant">Client</span>.<span class="ruby-identifier">from_url</span>(<span class="ruby-string">&#39;https://planetarycomputer.microsoft.com/api/stac/v1&#39;</span>)
+
+<span class="ruby-comment"># Search items.</span>
+<span class="ruby-identifier">res</span> = <span class="ruby-identifier">client</span>.<span class="ruby-identifier">search</span>(
+  <span class="ruby-value">collections:</span> [<span class="ruby-string">&#39;landsat-8-c2-l2&#39;</span>],
+  <span class="ruby-value">bbox:</span> [<span class="ruby-value">140</span>, <span class="ruby-value">36</span>, <span class="ruby-value">140.5</span>, <span class="ruby-value">36.5</span>],
+  <span class="ruby-value">datetime:</span> <span class="ruby-string">&#39;2022-01-01T00:00:00Z/2022-02-01T00:00:00Z&#39;</span>,
+)
+<span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;#{res.matched} items matched.&quot;</span>
+
+<span class="ruby-comment"># `#items` returns the all resulting items with automatic pagination.</span>
+<span class="ruby-identifier">res</span>.<span class="ruby-identifier">items</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">item</span><span class="ruby-operator">|</span>
+  <span class="ruby-identifier">puts</span> <span class="ruby-identifier">item</span>.<span class="ruby-identifier">id</span>
+<span class="ruby-keyword">end</span>
+</pre>
 
 <h2 id="label-Documentation">Documentation<span><a href="#label-Documentation">&para;</a> <a href="#top">&uarr;</a></span></h2>
 

@@ -74,6 +74,7 @@
   <ul class="link-list" role="directory">
     <li ><a href="#method-c-new">::new</a>
     <li ><a href="#method-i-items">#items</a>
+    <li ><a href="#method-i-matched">#matched</a>
     <li ><a href="#method-i-pages">#pages</a>
   </ul>
 </div>
@@ -162,9 +163,30 @@
           <p>Returns search results as Enumerator::Lazy of Item with automatic pagination.</p>
 
           <div class="method-source-code" id="items-source">
-            <pre><span class="ruby-comment"># File lib/stac/client/item_search.rb, line 24</span>
+            <pre><span class="ruby-comment"># File lib/stac/client/item_search.rb, line 29</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">items</span>
   <span class="ruby-identifier">pages</span>.<span class="ruby-identifier">lazy</span>.<span class="ruby-identifier">flat_map</span>(<span class="ruby-operator">&amp;</span><span class="ruby-value">:features</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-matched" class="method-detail ">
+        <div class="method-heading">
+          <span class="method-name">matched</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+
+        <div class="method-description">
+          <p>Returns the number matched for search.</p>
+
+          <div class="method-source-code" id="matched-source">
+            <pre><span class="ruby-comment"># File lib/stac/client/item_search.rb, line 24</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">matched</span>
+  <span class="ruby-identifier">pages</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">number_matched</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
@@ -183,7 +205,7 @@
           <p>Returns responses as Enumerator of <a href="ItemCollection.html"><code>ItemCollection</code></a> by following next links automatically.</p>
 
           <div class="method-source-code" id="pages-source">
-            <pre><span class="ruby-comment"># File lib/stac/client/item_search.rb, line 29</span>
+            <pre><span class="ruby-comment"># File lib/stac/client/item_search.rb, line 34</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">pages</span>
   <span class="ruby-ivar">@pages</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">Enumerator</span>.<span class="ruby-identifier">new</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">yielder</span><span class="ruby-operator">|</span>
     <span class="ruby-identifier">loop</span> <span class="ruby-keyword">do</span>
