@@ -1,6 +1,8 @@
 # stac-client-ruby
 
-A Ruby client for working with [STAC](https://stacspec.org/) Catalogs and API.
+A Ruby client for working with [STAC API](https://github.com/radiantearth/stac-api-spec).
+
+This gem is built on [satc-ruby](https://github.com/sankichi92/stac-ruby), and this gem's implementation refers to [PySTAC Client](https://github.com/stac-utils/pystac-client).
 
 ## Installation
 
