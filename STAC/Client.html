@@ -98,7 +98,7 @@
 
   <section class="description">
     
-<p><a href="Client.html"><code>Client</code></a> for interacting with the root of a STAC API.</p>
+<p>Client for interacting with the root of a STAC API.</p>
 
   </section>
 
@@ -110,8 +110,6 @@
         <h3>Constants</h3>
       </header>
       <dl>
-        <dt id="SPEC_VERSION">SPEC_VERSION
-        <dd>
         <dt id="VERSION">VERSION
         <dd>
       </dl>
@@ -139,7 +137,7 @@
         </div>
 
         <div class="method-description">
-        <p>STAC::Catalog instance of a STAC API landing page.</p>
+        
         </div>
       </div>
     </section>
@@ -190,7 +188,7 @@
           
 
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/stac/client.rb, line 39</span>
+            <pre><span class="ruby-comment"># File lib/stac/client.rb, line 41</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">catalog</span>, <span class="ruby-value">http_client:</span> <span class="ruby-constant">HTTPClient</span>.<span class="ruby-identifier">new</span>)
   <span class="ruby-ivar">@catalog</span> = <span class="ruby-identifier">catalog</span>
   <span class="ruby-ivar">@http_client</span> = <span class="ruby-identifier">http_client</span>
@@ -219,7 +217,7 @@
           <p>Returns the value of “conformsTo” field.</p>
 
           <div class="method-source-code" id="conformances-source">
-            <pre><span class="ruby-comment"># File lib/stac/client.rb, line 45</span>
+            <pre><span class="ruby-comment"># File lib/stac/client.rb, line 47</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">conformances</span>
   <span class="ruby-identifier">catalog</span>.<span class="ruby-identifier">extra</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-string">&#39;conformsTo&#39;</span>, [])
 <span class="ruby-keyword">end</span></pre>
@@ -242,7 +240,7 @@
 <p>The argument should be a constant of <a href="Client/Conformance.html"><code>Conformance</code></a>.</p>
 
           <div class="method-source-code" id="conforms_to-3F-source">
-            <pre><span class="ruby-comment"># File lib/stac/client.rb, line 52</span>
+            <pre><span class="ruby-comment"># File lib/stac/client.rb, line 54</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">conforms_to?</span>(<span class="ruby-identifier">conformance</span>)
   <span class="ruby-identifier">conformances</span>.<span class="ruby-identifier">any?</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span> <span class="ruby-identifier">conformance</span>.<span class="ruby-identifier">match?</span>(<span class="ruby-identifier">c</span>) }
 <span class="ruby-keyword">end</span></pre>
@@ -260,12 +258,12 @@
         </div>
 
         <div class="method-description">
-          <p>Queries the /search endpoint using the given parameters and returns <a href="Client/ItemSearch.html"><code>ItemSearch</code></a>.</p>
+          <p>Queries the /search endpoint with the given parameters and returns <a href="Client/ItemSearch.html"><code>ItemSearch</code></a>.</p>
 
 <p>Raises NotImplementedError when the Catalog have no rel=“search” links.</p>
 
           <div class="method-source-code" id="search-source">
-            <pre><span class="ruby-comment"># File lib/stac/client.rb, line 59</span>
+            <pre><span class="ruby-comment"># File lib/stac/client.rb, line 61</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">search</span>(<span class="ruby-operator">**</span><span class="ruby-identifier">params</span>)
   <span class="ruby-identifier">search_links</span> = <span class="ruby-identifier">catalog</span>.<span class="ruby-identifier">links</span>.<span class="ruby-identifier">select</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">link</span><span class="ruby-operator">|</span>
     <span class="ruby-identifier">link</span>.<span class="ruby-identifier">rel</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;search&#39;</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">link</span>.<span class="ruby-identifier">type</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;application/geo+json&#39;</span>
