@@ -8,7 +8,7 @@ module STAC
     # Represents a deferred query to a \STAC search endpoint as described in the
     # {STAC API - Item Search spec}[https://github.com/radiantearth/stac-api-spec/tree/master/item-search]
     class ItemSearch
-      DEFAULT_PARAMS = { 'limit' => 100 }.freeze
+      DEFAULT_PARAMS = { 'limit' => 100 }.freeze # :nodoc:
 
       attr_reader :client
 
@@ -20,7 +20,7 @@ module STAC
         @headers = headers
       end
 
-      # Returns search results as Enumerator::Lazy of Item.
+      # Returns search results as Enumerator::Lazy of Item with automatic pagination.
       def items
         pages.lazy.flat_map(&:features)
       end

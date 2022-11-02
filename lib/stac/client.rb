@@ -12,7 +12,7 @@ STAC.default_http_client = STAC::Client::HTTPClient.new
 STAC::ObjectResolver.resolvables << STAC::Client::ItemCollection
 
 module STAC
-  # Client for interacting with the root of a \STAC API.
+  # \Client for interacting with the root of a \STAC API.
   class Client
     extend Forwardable
 
@@ -32,7 +32,9 @@ module STAC
     end
 
     # STAC::Catalog instance of a \STAC API landing page.
-    attr_reader :catalog, :http_client
+    attr_reader :catalog
+
+    attr_reader :http_client
 
     def_delegators :http_client, :get, :post
 
@@ -53,7 +55,7 @@ module STAC
       conformances.any? { |c| conformance.match?(c) }
     end
 
-    # Queries the /search endpoint using the given parameters and returns ItemSearch.
+    # Queries the /search endpoint with the given parameters and returns ItemSearch.
     #
     # Raises NotImplementedError when the Catalog have no rel="search" links.
     def search(**params)

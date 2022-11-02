@@ -7,7 +7,7 @@ module STAC
   class Client
     # A HTTP Client, wrapper of Faraday[https://github.com/lostisland/faraday].
     class HTTPClient
-      DEFAULT_HEADERS = { 'User-Agent' => "stac-client-ruby v#{VERSION}" }.freeze # :no_doc:
+      DEFAULT_HEADERS = { 'User-Agent' => "stac-client-ruby v#{VERSION}" }.freeze # :nodoc:
 
       attr_reader :connection
 
