@@ -1,16 +1,16 @@
 GIT
   remote: https://github.com/sankichi92/stac-ruby.git
-  revision: ea972b550c4e791e151aac309ab7a39892ca4470
+  revision: 0f3bdd419cf627086831ace842626a35f3ae9d1f
   branch: main
   specs:
-    stac (0.1.0)
+    stac (0.2.0)
 
 PATH
   remote: .
   specs:
     stac-client (0.1.0)
-      faraday (>= 1.0, < 3.0)
-      stac (~> 0.1.0)
+      faraday (>= 1.10, < 3.0)
+      stac (~> 0.2.0)
 
 GEM
   remote: https://rubygems.org/
