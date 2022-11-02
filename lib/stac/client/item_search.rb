@@ -20,6 +20,11 @@ module STAC
         @headers = headers
       end
 
+      # Returns the number matched for search.
+      def matched
+        pages.first.number_matched
+      end
+
       # Returns search results as Enumerator::Lazy of Item with automatic pagination.
       def items
         pages.lazy.flat_map(&:features)
