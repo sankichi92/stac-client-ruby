@@ -1,10 +1,10 @@
-Fri, 23 Aug 2024 01:18:45 +0000
-README.md	Fri, 23 Aug 2024 01:18:24 +0000
-CHANGELOG.md	Fri, 23 Aug 2024 01:18:24 +0000
-lib/stac-client.rb	Fri, 23 Aug 2024 01:18:24 +0000
-lib/stac/client.rb	Fri, 23 Aug 2024 01:18:24 +0000
-lib/stac/client/conformance.rb	Fri, 23 Aug 2024 01:18:24 +0000
-lib/stac/client/http_client.rb	Fri, 23 Aug 2024 01:18:24 +0000
-lib/stac/client/item_collection.rb	Fri, 23 Aug 2024 01:18:24 +0000
-lib/stac/client/item_search.rb	Fri, 23 Aug 2024 01:18:24 +0000
-lib/stac/client/version.rb	Fri, 23 Aug 2024 01:18:24 +0000
+Tue, 29 Oct 2024 01:11:03 +0000
+README.md	Tue, 29 Oct 2024 01:10:44 +0000
+CHANGELOG.md	Tue, 29 Oct 2024 01:10:44 +0000
+lib/stac-client.rb	Tue, 29 Oct 2024 01:10:44 +0000
+lib/stac/client.rb	Tue, 29 Oct 2024 01:10:44 +0000
+lib/stac/client/conformance.rb	Tue, 29 Oct 2024 01:10:44 +0000
+lib/stac/client/http_client.rb	Tue, 29 Oct 2024 01:10:44 +0000
+lib/stac/client/item_collection.rb	Tue, 29 Oct 2024 01:10:44 +0000
+lib/stac/client/item_search.rb	Tue, 29 Oct 2024 01:10:44 +0000
+lib/stac/client/version.rb	Tue, 29 Oct 2024 01:10:44 +0000
