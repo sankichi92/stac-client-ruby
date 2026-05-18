@@ -40,7 +40,7 @@ GEM
       reline (>= 0.3.1)
     diff-lcs (1.5.0)
     drb (2.2.1)
-    faraday (2.14.1)
+    faraday (2.14.2)
       faraday-net_http (>= 2.0, < 3.5)
       json
       logger
@@ -54,12 +54,12 @@ GEM
     io-console (0.5.11)
     irb (1.4.2)
       reline (>= 0.3.0)
-    json (2.6.2)
+    json (2.19.5)
     language_server-protocol (3.17.0.5)
     listen (3.7.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
-    logger (1.5.1)
+    logger (1.7.0)
     minitest (5.22.2)
     mutex_m (0.2.0)
     net-http (0.9.1)
